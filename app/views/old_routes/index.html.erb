@@ -1,0 +1,21 @@
+<h1>Listing old_routes</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @old_routes.each do |old_route| %>
+  <tr>
+    <td><%= link_to 'Show', old_route %></td>
+    <td><%= link_to 'Edit', edit_old_route_path(old_route) %></td>
+    <td><%= link_to 'Destroy', old_route, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Old route', new_old_route_path %>

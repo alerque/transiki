@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @point_tag.key %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @point_tag.value %>
+</p>
+
+<p>
+  <b>Point:</b>
+  <%= @point_tag.point_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_point_tag_path(@point_tag) %> |
+<%= link_to 'Back', point_tags_path %>

@@ -1,0 +1,27 @@
+<h1>Listing old_points</h1>
+
+<table>
+  <tr>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Point</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @old_points.each do |old_point| %>
+  <tr>
+    <td><%= old_point.latitude %></td>
+    <td><%= old_point.longitude %></td>
+    <td><%= old_point.point_id %></td>
+    <td><%= link_to 'Show', old_point %></td>
+    <td><%= link_to 'Edit', edit_old_point_path(old_point) %></td>
+    <td><%= link_to 'Destroy', old_point, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Old point', new_old_point_path %>

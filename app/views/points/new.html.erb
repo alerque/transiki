@@ -1,0 +1,91 @@
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+
+<h1>Add a transit point</h1>
+
+<h2>1. Move the marker to where the transit stop is:</h2>
+<div id="map" style="width: 500px; height: 300px; border: 1px solid black">
+</div>
+
+<script>
+  var map = new OpenLayers.Map("map");
+  var osmLayer = new OpenLayers.Layer.OSM();
+
+  map.addLayer(osmLayer);
+  map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+  var vectorLayer = new OpenLayers.Layer.Vector("Vector Layer");
+
+  var p = new OpenLayers.Feature.Vector(
+            new OpenLayers.Geometry.Point(0,0),
+              {type: 5}
+          );
+
+  vectorLayer.addFeatures(p);
+
+  function dragComplete(feature,pixel) {
+    var x = feature.geometry.x;
+    var y = feature.geometry.y;
+    
+    var featureClone = feature.clone();
+
+    var proj = new OpenLayers.Projection("EPSG:4326");
+    var point = featureClone.geometry;
+    point.transform(map.getProjectionObject(), proj);
+
+    $('point_longitude').value = point.x;
+    $('point_latitude').value = point.y;
+    //alert(point.x + " " + point.y);
+
+    // you'd think getting the lat/lon wouldn't be this fucking difficult, wouldn't you?
+  }
+
+  var dragController = new OpenLayers.Control.DragFeature(
+    vectorLayer, {'onComplete':
+    dragComplete});
+
+  map.addControl(dragController);
+  dragController.activate();
+
+
+  map.addLayer(vectorLayer);
+  map.zoomToMaxExtent();
+</script>
+
+<%= form_for(@point) do |f| %>
+
+<div class="field">
+  <%= f.label :latitude %><br />
+  <%= f.text_field :latitude %>
+</div>
+
+<div class="field">
+  <%= f.label :longitude %><br />
+  <%= f.text_field :longitude %>
+</div>
+
+<div class="field">
+  <%= f.label :tags %><br />
+  <%= f.text_field :tag_string %>
+comma seperated example: name=Mornington Crescent, owner=TFL
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+<!--
+<%= render 'form' %>
+-->
+
+
+<%= link_to 'Back', points_path %>

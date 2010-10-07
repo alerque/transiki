@@ -1,0 +1,21 @@
+<h1>Listing route_points</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @route_points.each do |route_point| %>
+  <tr>
+    <td><%= link_to 'Show', route_point %></td>
+    <td><%= link_to 'Edit', edit_route_point_path(route_point) %></td>
+    <td><%= link_to 'Destroy', route_point, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Route point', new_route_point_path %>

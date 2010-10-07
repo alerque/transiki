@@ -1,0 +1,17 @@
+<%= form_for(@old_route_tag) do |f| %>
+  <% if @old_route_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@old_route_tag.errors.count, "error") %> prohibited this old_route_tag from being saved:</h2>
+
+      <ul>
+      <% @old_route_tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: transiki
+  username: transiki
+  password: transiki
+#  socket: /tmp/mysql.sock
+
+

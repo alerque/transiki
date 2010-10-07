@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @old_point.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @old_point.longitude %>
+</p>
+
+<p>
+  <b>Point:</b>
+  <%= @old_point.point_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_old_point_path(@old_point) %> |
+<%= link_to 'Back', old_points_path %>

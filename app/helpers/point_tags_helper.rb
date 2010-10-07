@@ -1,0 +1,2 @@
+module PointTagsHelper
+end

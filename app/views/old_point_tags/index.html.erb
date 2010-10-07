@@ -1,0 +1,27 @@
+<h1>Listing old_point_tags</h1>
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+    <th>Point</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @old_point_tags.each do |old_point_tag| %>
+  <tr>
+    <td><%= old_point_tag.key %></td>
+    <td><%= old_point_tag.value %></td>
+    <td><%= old_point_tag.point_id %></td>
+    <td><%= link_to 'Show', old_point_tag %></td>
+    <td><%= link_to 'Edit', edit_old_point_tag_path(old_point_tag) %></td>
+    <td><%= link_to 'Destroy', old_point_tag, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Old point tag', new_old_point_tag_path %>
