@@ -8,6 +8,8 @@ Transwiki::Application.routes.draw do
 
   resources :old_route_tags
 
+  resources :points
+
   resources :route_tags
 
   resources :old_routes
@@ -23,9 +25,6 @@ Transwiki::Application.routes.draw do
   # routes
 
   # other
-
-  match '/' => 'site#index'
-
 
   #resources :old_point_tags
   #resources :point_tags
@@ -83,7 +82,7 @@ Transwiki::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => 'site#index'
 
   # See how all your routes lay out with "rake routes"
 
