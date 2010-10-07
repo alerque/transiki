@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100927031406) do
+ActiveRecord::Schema.define(:version => 20101007195801) do
 
   create_table "old_point_tags", :force => true do |t|
     t.string   "key"
@@ -26,6 +26,26 @@ ActiveRecord::Schema.define(:version => 20100927031406) do
     t.float    "longitude"
     t.integer  "point_id"
     t.integer  "version"
+    t.integer  "user_id"
+    t.boolean  "visible"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "old_route_points", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "old_route_tags", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "old_routes", :force => true do |t|
+    t.integer  "version"
+    t.integer  "user_id"
+    t.boolean  "visible"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,6 +63,31 @@ ActiveRecord::Schema.define(:version => 20100927031406) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "version"
+    t.integer  "user_id"
+    t.boolean  "visible"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "route_points", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "route_tags", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "routes", :force => true do |t|
+    t.integer  "version"
+    t.integer  "user_id"
+    t.boolean  "visible"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
