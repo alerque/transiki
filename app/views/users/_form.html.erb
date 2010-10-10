@@ -4,14 +4,33 @@
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+    <legend>Enter User Details</legend>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email, :size => 40 %>
+    </div>
+
+    <div>
+      <%= f.label :password, 'Password' %>
+      <%= f.password_field :password, :size => 40 %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation, 'Confirm password' %>
+      <%= f.password_field :password_confirmation, :size => 40 %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </fieldset>
 <% end %>
+</div>

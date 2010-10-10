@@ -88,6 +88,10 @@ ActiveRecord::Schema.define(:version => 20101007195801) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "hashed_password"
+    t.string   "salt"
+    t.boolean  "confirmed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

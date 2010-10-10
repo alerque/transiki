@@ -7,6 +7,20 @@
 </head>
 <body>
 
+<%= link_to 'home', '/' %>
+
+<% if session[:user_id] %>
+  you are logged in
+<% else %>
+  <%= link_to 'create acct', new_user_path %> |
+  <%= link_to 'login', new_session_path %>
+<% end %>
+
+<h1>Transiki</h1>
+
+
+
+
 <%= yield %>
 
 </body>

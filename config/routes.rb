@@ -1,19 +1,13 @@
 Transwiki::Application.routes.draw do
 
   resources :old_route_points
-
   resources :route_points
-
   resources :users
-
+  resources :sessions
   resources :old_route_tags
-
   resources :points
-
   resources :route_tags
-
   resources :old_routes
-
   resources :routes
 
   # points
