@@ -1,4 +1,6 @@
 class PointsController < ApplicationController
+  before_filter :require_user, :only => [:new, :edit]
+
   # GET /points
   # GET /points.xml
   def index
