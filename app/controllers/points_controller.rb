@@ -49,6 +49,7 @@ class PointsController < ApplicationController
 
   def create_xml
     point = Point.from_xml(request.raw_post.to_s, true)
+    point.user_id = @user.id
 
     point.save_with_history!
 

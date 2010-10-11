@@ -1,5 +1,5 @@
 class Point < ActiveRecord::Base 
-  has_many :point_tags, :foreign_key => :id
+  has_many :point_tags
 
   # WARNING FIXME
   # the tags modelling is broken in this model right now
@@ -52,10 +52,9 @@ class Point < ActiveRecord::Base
       self.version += 1
       self.save!
 
-      ensure_tags
-      @tags.each do |tag|
+      point_tags.each do |tag|
         tag.version = self.version
-        tag.point_id = self.id
+        tag.point_id = self.id # FIXME I think this isn't needed
         tag.save!
       end
 
@@ -78,9 +77,13 @@ class Point < ActiveRecord::Base
 
     point.latitude = pt.attributes['lat']
     point.longitude = pt.attributes['lon']
+    point.visible = true
 
     pt.elements.each('tag') do |tag|
-      point.add_tag(tag.attributes['k'], tag.attributes['v'])
+      pt = PointTag.new
+      pt.key = tag.attributes['k']
+      pt.value = tag.attributes['v']
+      point.point_tags << pt
     end
 
     return point
