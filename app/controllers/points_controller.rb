@@ -20,8 +20,12 @@ class PointsController < ApplicationController
 
   def read
     point = Point.find(params[:id])
-    
-    render :text => point.to_xml.to_s, :content_type => 'text/plain'
+
+    if point.visible?
+      render :text => point.to_xml.to_s, :content_type => 'text/plain'
+    else
+      render :text => "", :status => :gone
+    end
   end
 
   def create_xml
