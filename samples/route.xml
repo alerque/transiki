@@ -1,0 +1,26 @@
+<tw>
+        <route>
+                <points>
+                        <pt id="1">
+                                <tags>
+                                        <tag k="time_arrive" v="10:10" />
+                                        <tag k="day_arrive" v="monday" />
+                                        <tag k="platform" v="9 and 3/4" />
+                                </tags>
+                        </pt>
+
+                        <pt id="2">
+                                <tags>
+                                        <tag k="time_arrive" v="10:27:43" />
+                                        <tag k="day_arrive" v="monday" />
+                                        <tag k="platform" v="1" />
+                                </tags>
+                        </pt>
+                </points>
+                <tags>
+                        <tag k="name" v="Hogwarts Express" />
+                        <tag k="harrypotter" v="yes" />
+                </tags>
+        </route>
+</tw>
+

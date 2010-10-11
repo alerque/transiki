@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Route:</b>
+  <%= @route_point_tag.route_id %>
+</p>
+
+<p>
+  <b>Point:</b>
+  <%= @route_point_tag.point_id %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%= @route_point_tag.key %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @route_point_tag.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_route_point_tag_path(@route_point_tag) %> |
+<%= link_to 'Back', route_point_tags_path %>

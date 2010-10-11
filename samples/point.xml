@@ -1,0 +1,7 @@
+<tw>
+        <point lat="51.1" lon="-3.141592">
+                <tag k="foo" v="bar" />
+                <tag k="blah" v="cheese" />
+        </point>
+</tw>
+

@@ -1,0 +1,29 @@
+<h1>Listing route_point_tags</h1>
+
+<table>
+  <tr>
+    <th>Route</th>
+    <th>Point</th>
+    <th>Key</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @route_point_tags.each do |route_point_tag| %>
+  <tr>
+    <td><%= route_point_tag.route_id %></td>
+    <td><%= route_point_tag.point_id %></td>
+    <td><%= route_point_tag.key %></td>
+    <td><%= route_point_tag.value %></td>
+    <td><%= link_to 'Show', route_point_tag %></td>
+    <td><%= link_to 'Edit', edit_route_point_tag_path(route_point_tag) %></td>
+    <td><%= link_to 'Destroy', route_point_tag, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Route point tag', new_route_point_tag_path %>

@@ -1,0 +1,2 @@
+module RoutePointTagsHelper
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  route_id: 1
+  point_id: 1
+  key: MyString
+  value: MyString
+
+two:
+  route_id: 1
+  point_id: 1
+  key: MyString
+  value: MyString
