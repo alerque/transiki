@@ -1,5 +1,4 @@
 #require 'rubygems'
-#require 'composite_primary_keys'
 
 require 'rexml/document'
 

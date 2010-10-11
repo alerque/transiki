@@ -1,5 +1,6 @@
 class PointsController < ApplicationController
   before_filter :require_user, :only => [:new, :edit]
+  before_filter :require_user_api, :only => [:create_xml]
 
   # GET /points
   # GET /points.xml
