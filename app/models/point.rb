@@ -1,4 +1,11 @@
 class Point < ActiveRecord::Base 
+  has_many :point_tags, :foreign_key => :id
+
+  # WARNING FIXME
+  # the tags modelling is broken in this model right now
+  # like OSM, we should maintain our own hash of tags internally to the model
+  # but we don't yet.
+
   def tag_string=(ts)
     point_tags = []
 
@@ -19,7 +26,6 @@ class Point < ActiveRecord::Base
   end
 
   def tag_string
-
     if self.id
       tags = PointTag.find(:all, :conditions => "point_id = #{self.id}")
       ts = ''
@@ -59,23 +65,6 @@ class Point < ActiveRecord::Base
     end
   end
 
-  def ensure_tags
-    @tags = [] unless @tags
-  end
-
-  def tags
-    ensure_tags
-    return @tags
-  end
-
-  def add_tag(k,v)
-    ensure_tags
-    pt = PointTag.new
-    pt.key = k
-    pt.value = v
-    @tags << pt
-  end
-
   def self.from_xml(xml, create=false)
     doc = REXML::Document.new(xml)
 
@@ -105,6 +94,14 @@ class Point < ActiveRecord::Base
     point.attributes['version'] = self.version
     point.attributes['lat'] = self.latitude
     point.attributes['lon'] = self.longitude
+
+    self.point_tags.each do |t|
+      tag = REXML::Element.new 'tag'
+      tag.attributes['k'] = t.key
+      tag.attributes['v'] = t.value
+      point.elements << tag
+    end
+    
     root.elements << point
     doc.elements << root
 
