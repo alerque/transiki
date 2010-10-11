@@ -1,28 +1,6 @@
 class PointsController < ApplicationController
   before_filter :require_user, :only => [:new, :edit]
-  before_filter :require_user_api, :only => [:create_xml]
-
-  # GET /points
-  # GET /points.xml
-  def index
-    @points = Point.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @points }
-    end
-  end
-
-  # GET /points/1
-  # GET /points/1.xml
-  def show
-    @point = Point.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @point }
-    end
-  end
+  before_filter :require_user_api, :only => [:create_xml, :delete]
 
   # GET /points/new
   # GET /points/new.xml
@@ -40,7 +18,6 @@ class PointsController < ApplicationController
     @point = Point.find(params[:id])
   end
 
-
   def read
     point = Point.find(params[:id])
     
@@ -54,6 +31,18 @@ class PointsController < ApplicationController
     point.save_with_history!
 
     render :text => point.id, :content_type => 'text/plain'
+  end
+
+  def delete
+    point = Point.find(params[:id])
+    new_point = Point.from_xml(request.raw_post)
+
+    unless new_point and new_point.id == point.id
+      # FIXME throw an error here
+    end
+
+    point.delete_with_history!(@user)
+    render :text => point.version.to_s, :content_type => "text/plain"
   end
 
   # POST /points

@@ -10,13 +10,11 @@ class OldPoint < ActiveRecord::Base
     op.visible = point.visible
     op.user_id = point.user_id    
 
-    #FIXME copy over the old tags too
-
     point.point_tags.each do |tag|
       opt = OldPointTag.new
       opt.key = tag.key
       opt.value = tag.value
-      opt.version = tag.version
+      opt.version = op.version # inherit the version to avoid confusion
       opt.point_id = tag.point_id
       op.old_point_tags << opt
     end

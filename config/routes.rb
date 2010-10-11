@@ -14,7 +14,7 @@ Transwiki::Application.routes.draw do
   match 'api/0.1/point/create' => 'points#create_xml'
   match 'api/0.1/point/:id' => 'points#read', :via => :get, :id => /\d+/
   match 'api/0.1/point/:id' => 'points#update', :via => :put, :id => /\d+/
-  match 'api/0.1/point/:id' => 'points#delete', :via => :delete, :id => /\d+/
+  match 'api/0.1/point/:id' => 'points#delete', :via => :delete, :id => /\d+/, :conditions => { :method => :delete }
 
   # routes
 

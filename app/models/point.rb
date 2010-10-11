@@ -64,6 +64,26 @@ class Point < ActiveRecord::Base
     end
   end
 
+  def delete_with_history!(user)
+    Point.transaction do
+      self.visible = false
+      self.version += 1
+      self.user_id = user.id
+      
+      point_tags.each do |pt|
+        pt.destroy
+      end
+
+      self.save!
+
+      p = Point.find(self.id)
+
+      old_point = OldPoint.from_point(p)
+
+      old_point.save_with_dependencies!
+    end
+  end
+
   def self.from_xml(xml, create=false)
     doc = REXML::Document.new(xml)
 
@@ -104,7 +124,7 @@ class Point < ActiveRecord::Base
       tag.attributes['v'] = t.value
       point.elements << tag
     end
-    
+
     root.elements << point
     doc.elements << root
 
